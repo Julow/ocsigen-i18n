@@ -1,7 +1,5 @@
   $ printf "\n\n" | ocsigen-i18n --languages en,fr
   Fatal error: exception Failure("line: 1")
-  Raised at Stdlib.failwith in file "stdlib.ml", line 29, characters 17-33
-  Called from Dune__exe__I18n_generate in file "i18n_generate.mll", lines 439-440, characters 7-60
   [2]
 
   $ printf "a\tb\n" | ocsigen-i18n --languages en,fr
@@ -32,13 +30,6 @@
   match lang with
   | En -> "b"
   | Fr -> Fatal error: exception File "i18n_generate.mll", line 310, characters 4-10: Assertion failed
-  Raised at Dune__exe__I18n_generate.print_expr_string in file "i18n_generate.mll", line 310, characters 4-16
-  Called from Stdlib__Format.kfprintf.(fun) in file "format.ml", line 1522, characters 16-34
-  Called from Stdlib__List.iter in file "list.ml", line 114, characters 12-15
-  Called from Stdlib__Format.kfprintf.(fun) in file "format.ml", line 1522, characters 16-34
-  Called from Stdlib__List.iter in file "list.ml", line 114, characters 12-15
-  Called from Dune__exe__I18n_generate.print_body in file "i18n_generate.mll", line 331, characters 2-71
-  Called from Dune__exe__I18n_generate in file "i18n_generate.mll", line 436, characters 9-59
   [2]
 
   $ printf "a\tb\n" | ocsigen-i18n --eliom --languages en,fr
@@ -73,11 +64,4 @@
   match lang with
   | En -> [txt "b"]
   | Fr -> Fatal error: exception File "i18n_generate.mll", line 290, characters 4-10: Assertion failed
-  Raised at Dune__exe__I18n_generate.print_expr_html in file "i18n_generate.mll", line 290, characters 4-16
-  Called from Stdlib__Format.kfprintf.(fun) in file "format.ml", line 1522, characters 16-34
-  Called from Stdlib__List.iter in file "list.ml", line 114, characters 12-15
-  Called from Stdlib__Format.kfprintf.(fun) in file "format.ml", line 1522, characters 16-34
-  Called from Stdlib__List.iter in file "list.ml", line 114, characters 12-15
-  Called from Dune__exe__I18n_generate.print_body_eliom in file "i18n_generate.mll", line 320, characters 2-53
-  Called from Dune__exe__I18n_generate in file "i18n_generate.mll", line 429, characters 9-43
   [2]
