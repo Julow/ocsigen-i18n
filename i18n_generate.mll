@@ -368,6 +368,13 @@ let with_out_chan file f =
   | "-" -> f stdout
   | file -> Out_channel.with_open_text file f
 
+let with_out_fmt file f =
+  with_out_chan file (fun out_chan ->
+      let fmt = Format.formatter_of_out_channel out_chan in
+      let r = f fmt in
+      Format.pp_print_flush fmt (); (* Explicit flush to notice IO errors. *)
+      r)
+
 let parse_file ~variants input_file =
   with_in_chan input_file (fun in_chan ->
       let lexbuf = Lexing.from_channel in_chan in
@@ -445,8 +452,7 @@ let _ =
       let x = normalize_type ?primary_module x in
       assert (List.mem x variants) ;
       x in
-  with_out_chan !output_file (fun out_chan ->
-      let output = Format.formatter_of_out_channel out_chan in
+  with_out_fmt !output_file (fun output ->
       let tyxml = !tyxml_generation in
       let eliom = !eliom_generation in
       if !header then
